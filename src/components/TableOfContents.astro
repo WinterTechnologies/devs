@@ -1,0 +1,56 @@
+---
+interface Props {
+  headings: {
+    depth: number;
+    text: string;
+    slug: string;
+  }[];
+}
+
+import { generateToc } from "../utils/toc";
+const { headings } = Astro.props;
+const toc = generateToc(headings);
+---
+
+<nav class="toc p-4 mr-8 text-right rounded border">
+  <h2 class="font-semibold mb-2">Contents</h2>
+  <ul class="flex flex-col gap-0.5 text-right">
+    {
+      toc.map((heading) => (
+        <li class:list={["hover:underline", { "pr-4": heading.depth === 3 }]}>
+          <a
+            href={`#${heading.id}`}
+            class="block py-1 transition-colors duration-200"
+          >
+            {heading.text} -
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script>
+  // Highlight current section
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute("id");
+        const tocLink = document.querySelector(`a[href="#${id}"]`);
+
+        if (entry.isIntersecting) {
+          document.querySelectorAll(".toc a").forEach((link) => {
+            link.classList.remove("font-semibold");
+          });
+          tocLink?.classList.add("font-semibold");
+        }
+      });
+    },
+    { rootMargin: "0% 0% -80% 0%" }
+  );
+
+  // Track all section headings
+  document.querySelectorAll("h2, h3").forEach((heading) => {
+    observer.observe(heading);
+  });
+</script>

@@ -1,18 +1,25 @@
 ---
+import type { MarkdownHeading } from "astro";
 import Layout from "./Layout.astro";
 import { Icon } from "astro-icon/components";
+import TableOfContents from "../components/TableOfContents.astro";
 
 interface Props {
   title: string;
   description: string;
 
+  headings: MarkdownHeading[];
+
   backLink?: string;
   backText?: string;
 }
-const { title, description, backLink, backText } = Astro.props;
+const { title, description, backLink, backText, headings } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
+  <div class="md:fixed md:top-32 md:right-0">
+    <TableOfContents headings={headings} />
+  </div>
   <article class="prose lg:prose-xl md:max-w-screen-sm md:mx-auto mx-4 py-4">
     {
       backLink && (
@@ -24,6 +31,7 @@ const { title, description, backLink, backText } = Astro.props;
         </a>
       )
     }
+
     <slot />
   </article>
 </Layout>
