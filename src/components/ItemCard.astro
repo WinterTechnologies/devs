@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  tags: string[];
+}
+const { slug, title, description, tags } = Astro.props;
+---
+
+<a
+  href={`/tools/${slug}`}
+  class="hover:bg-neutral-200 rounded overflow-hidden p-4 border relative group duration-100"
+>
+  <li>
+    <h3 class="text-lg font-semibold">{title}</h3>
+    <p class="truncate">{description}</p>
+    <p class="text-xs pt-2">
+      tags:{" "}
+      {tags.map((tag: string) => `${tag}`).join(" ")}
+    </p>
+    <span
+      class="absolute top-2 right-2 group-hover:top-1 group-hover:right-1 duration-100"
+    >
+      <Icon name="lucide:arrow-up-right" class="size-6" />
+    </span>
+  </li>
+</a>
