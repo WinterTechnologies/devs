@@ -1,0 +1,25 @@
+---
+import { cn } from "@/lib/utils";
+
+interface Props {
+  className?: string;
+  variant?: "default" | "outline";
+}
+
+const badgeVariants = {
+  default: "bg-neutral-800 text-white focus:outline-none",
+  outline: "border border-neutral-700 focus:outline-none",
+};
+
+const { className, variant = "default" } = Astro.props;
+---
+
+<div
+  class={cn(
+    "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+    badgeVariants[variant],
+    className
+  )}
+>
+  <slot />
+</div>

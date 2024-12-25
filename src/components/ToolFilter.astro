@@ -1,0 +1,66 @@
+---
+import { Select, SelectContent, SelectItem } from "@/components/ui/select";
+
+interface Props {
+  categories: string[];
+}
+
+const { categories } = Astro.props;
+---
+
+<div class="flex gap-4">
+  <select
+    id="categoryFilter"
+    class="px-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
+  >
+    <option value="all">All Categories</option>
+    {
+      categories.map((category) => (
+        <option value={category}>
+          {String(category).charAt(0).toUpperCase() + String(category).slice(1)}
+        </option>
+      ))
+    }
+  </select>
+
+  <select
+    id="priceFilter"
+    class="px-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
+  >
+    <option value="all">All Pricing Models</option>
+    <option value="Free">Free</option>
+    <option value="Paid">Paid</option>
+    <option value="Freemium">Freemium</option>
+  </select>
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const categoryFilter = document.getElementById("categoryFilter");
+    const priceFilter = document.getElementById("priceFilter");
+    const toolCards = document.querySelectorAll("[data-category]");
+
+    function updateVisibility() {
+      const selectedCategory = categoryFilter.value;
+      const selectedPrice = priceFilter.value;
+
+      toolCards.forEach((card) => {
+        const matchesCategory =
+          selectedCategory === "all" ||
+          card.getAttribute("data-category") === selectedCategory;
+        const matchesPrice =
+          selectedPrice === "all" ||
+          card.getAttribute("data-price") === selectedPrice;
+
+        if (matchesCategory && matchesPrice) {
+          card.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
+      });
+    }
+
+    categoryFilter?.addEventListener("change", updateVisibility);
+    priceFilter?.addEventListener("change", updateVisibility);
+  });
+</script>

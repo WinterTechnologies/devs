@@ -14,7 +14,7 @@ const toc = generateToc(headings);
 
 <nav class="toc p-4 md:mr-8 md:text-right rounded md:border">
   <h2 class="font-semibold mb-2">Contents</h2>
-  <ul class="flex flex-col gap-0.5 md:text-right">
+  <ul class="flex flex-col md:text-right">
     {
       toc.map((heading) => (
         <li class:list={["hover:underline", { "pr-4": heading.depth === 3 }]}>

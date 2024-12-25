@@ -20,7 +20,9 @@ const { title, description, backLink, backText, headings } = Astro.props;
   <div class="md:fixed md:top-32 md:right-0">
     <TableOfContents headings={headings} />
   </div>
-  <article class="prose lg:prose-xl md:max-w-screen-sm md:mx-auto mx-4 py-4">
+  <article
+    class="prose lg:prose-xl md:max-w-screen-sm md:mx-auto mx-4 py-4 mb-4"
+  >
     {
       backLink && (
         <a

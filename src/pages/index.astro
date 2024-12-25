@@ -31,14 +31,10 @@ tools.slice(0, 6);
         class="grid grid-cols-1 md:grid-cols-3 gap-2 items-center justify-center"
       >
         {
-          tools.map((tool) => (
-            <ItemCard
-              slug={tool.slug}
-              title={tool.data.title}
-              description={tool.data.description}
-              tags={tool.data.tags}
-            />
-          ))
+          tools.map(async (tool) => {
+            const { Content } = await tool.render();
+            return <ItemCard Content={Content} {...tool.data} />;
+          })
         }
       </ul>
     </section>

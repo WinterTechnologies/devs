@@ -1,0 +1,72 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "../layouts/Layout.astro";
+
+interface Link {
+  title: string;
+  url: string;
+}
+
+interface Category {
+  title: string;
+  description: string;
+  links: Link[];
+}
+
+const resources: Category[] = [
+  {
+    title: "Official Roblox",
+    description: "Official resources from Roblox.",
+    links: [
+      {
+        title: "Roblox Devforum",
+        url: "https://devforum.roblox.com/",
+      },
+      {
+        title: "Roblox Documentation",
+        url: "https://developer.roblox.com/",
+      },
+      {
+        title: "Roblox Developer Store",
+        url: "https://create.roblox.com/store/models",
+      },
+    ],
+  },
+];
+---
+
+<Layout title="Resources">
+  <main class="md:max-w-screen-lg md:mx-auto mx-4 py-6">
+    <h1 class="text-2xl md:text-3xl font-semibold">Resources</h1>
+    <p>
+      This page has a list of all the resources we reccomend. This could be
+      websites, documents, etc. Feel free to add your own on github. <i
+        >Please note: all links on this page are not affiliated with us and go
+        to external websites.</i
+      >
+    </p>
+    <div class="py-8 flex flex-col gap-4">
+      {
+        resources.map((category: Category) => (
+          <div>
+            <h3 class="text-xl font-semibold">{category.title}</h3>
+            <p class="pb-2">{category.description}</p>
+            <ul class="grid grid-cols-1 md:grid-cols-3 gap-2 items-center">
+              {category.links.map((link: Link) => (
+                <a
+                  class="hover:bg-neutral-200 rounded overflow-hidden p-4 border relative duration-100"
+                  href={link.url}
+                >
+                  <li class="inline-flex justify-between w-full">
+                    {link.title}{" "}
+                    <Icon name="lucide:arrow-up-right" class="size-6" />
+                  </li>
+                </a>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </main>
+</Layout>

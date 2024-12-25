@@ -9,10 +9,12 @@ const tools = defineCollection({
 
     author: z.string().default("Anonymous"),
 
+    link: z.string().url(),
+    pricingModel: z.enum(["Free", "Paid", "Freemium"]),
+
     draft: z.boolean().default(false),
     date: z.coerce.date(),
-    tags: z.array(z.string()),
-    category: z.enum(["art", "video", "audio", "code", "other"]),
+    category: z.enum(["design", "video", "audio", "development", "other"]),
   }),
 });
 

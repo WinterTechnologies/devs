@@ -1,30 +1,33 @@
 ---
 import { Icon } from "astro-icon/components";
+import Button from "./Button.astro";
+import Badge from "./Badge.astro";
 
 interface Props {
-  slug: string;
   title: string;
   description: string;
-  tags: string[];
+  link: string;
+  category: string;
+  pricingModel: string;
+  Content: any;
 }
-const { slug, title, description, tags } = Astro.props;
+const { title, description, link, category, pricingModel, Content } =
+  Astro.props;
 ---
 
-<a
-  href={`/tools/${slug}`}
-  class="hover:bg-neutral-200 rounded overflow-hidden p-4 border relative group duration-100"
+<li
+  data-category={category}
+  data-price={pricingModel}
+  class="shadow border border-neutral-200 px-4 py-4 rounded h-full justify-between flex-col flex"
 >
-  <li>
-    <h3 class="text-lg font-semibold">{title}</h3>
+  <div>
+    <h2 class="p-0 m-0 text-2xl font-semibold">{title}</h2>
     <p class="truncate">{description}</p>
-    <p class="text-xs pt-2">
-      tags:{" "}
-      {tags.map((tag: string) => `${tag}`).join(" ")}
-    </p>
-    <span
-      class="absolute top-2 right-2 group-hover:top-1 group-hover:right-1 duration-100"
-    >
-      <Icon name="lucide:arrow-up-right" class="size-6" />
-    </span>
-  </li>
-</a>
+    <Badge className="capitalize">{category}</Badge>
+    <Badge className="capitalize">{pricingModel}</Badge>
+    <div class="prose prose-h2:mb-2 prose-h3:mb-1 prose-p:mb-1 py-4">
+      <Content />
+    </div>
+  </div>
+  <Button href={link} variant="outline" className="w-full">View Tool</Button>
+</li>
