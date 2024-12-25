@@ -13,6 +13,7 @@ const tools = defineCollection({
     pricingModel: z.enum(["Free", "Paid", "Freemium"]),
 
     draft: z.boolean().default(false),
+    featured: z.boolean().default(false).optional(),
     date: z.coerce.date(),
     category: z.enum(["design", "video", "audio", "development", "other"]),
   }),
