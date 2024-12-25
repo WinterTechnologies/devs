@@ -3,8 +3,10 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import ItemCard from "../components/ItemCard.astro";
 
-const tools = await getCollection("tools");
-tools.slice(0, 6);
+const unfilteredTools = await getCollection("tools");
+const tools = unfilteredTools
+  .filter((tool) => tool.data.featured === true)
+  .slice(0, 6);
 ---
 
 <Layout title="Home">
