@@ -8,7 +8,9 @@ import icon from "astro-icon";
 
 import react from "@astrojs/react";
 
+import preact from "@astrojs/preact";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), tailwind({ applyBaseStyles: false }), icon(), react()],
+  integrations: [mdx(), tailwind({ applyBaseStyles: false }), icon(), react(), preact()],
 });
