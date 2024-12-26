@@ -7,7 +7,9 @@ date: 2024-12-26
 Put this script inside your part.
 
 ```lua
-script.Parent.Touched:Connect(function(hit)
+local killPart = script.Parent -- Change if the part is not the parent of this script.
+
+killPart.Touched:Connect(function(hit)
     local humanoid = hit.Parent:FindFirstChildOfClass("Humanoid")
     if humanoid then
         humanoid.Health = 0
