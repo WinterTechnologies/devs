@@ -12,13 +12,13 @@ const { categories } = Astro.props;
     type="text"
     id="searchFilter"
     placeholder="Search..."
-    class="px-4 py-2 rounded-lg border border-primary focus:outline-none focus:ring-2 focus:ring-purple-800 w-full sm:w-auto"
+    class="px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600 w-full sm:w-auto"
   />
 
   <!-- Category Filter -->
   <select
     id="categoryFilter"
-    class="px-4 py-2 rounded-lg border border-primary focus:outline-none focus:ring-2 focus:ring-purple-800"
+    class="px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
   >
     <option value="all">All Categories</option>
     {
@@ -33,7 +33,7 @@ const { categories } = Astro.props;
   <!-- Pricing Filter -->
   <select
     id="priceFilter"
-    class="px-4 py-2 rounded-lg border border-primary focus:outline-none focus:ring-2 focus:ring-purple-800"
+    class="px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
   >
     <option value="all">All Pricing Models</option>
     <option value="Free">Free</option>
@@ -45,7 +45,7 @@ const { categories } = Astro.props;
   <select
     name="platformFilter"
     id="platformFilter"
-    class="px-4 py-2 rounded-lg border border-primary focus:outline-none focus:ring-2 focus:ring-purple-800"
+    class="px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
   >
     <option value="all">All Platforms</option>
     <option value="Windows">Windows</option>
@@ -56,6 +56,9 @@ const { categories } = Astro.props;
   </select>
 </div>
 
+<!-- Tool Count -->
+<p id="toolCount" class="mt-4 text-sm text-gray-600">Showing all tools.</p>
+
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
     const searchFilter = document.getElementById("searchFilter");
@@ -63,12 +66,15 @@ const { categories } = Astro.props;
     const priceFilter = document.getElementById("priceFilter");
     const platformFilter = document.getElementById("platformFilter");
     const toolCards = document.querySelectorAll("[data-category]");
+    const toolCount = document.getElementById("toolCount");
 
     function updateVisibility() {
       const searchTerm = searchFilter.value.toLowerCase();
       const selectedCategory = categoryFilter.value.toLowerCase();
       const selectedPrice = priceFilter.value.toLowerCase();
       const selectedPlatform = platformFilter.value.toLowerCase();
+
+      let visibleCount = 0;
 
       toolCards.forEach((card) => {
         const cardTitle = card.querySelector("h2")?.textContent.toLowerCase();
@@ -106,10 +112,20 @@ const { categories } = Astro.props;
           matchesPlatform
         ) {
           card.classList.remove("hidden");
+          visibleCount++;
         } else {
           card.classList.add("hidden");
         }
       });
+
+      // Update the tool count
+      if (visibleCount === 0) {
+        toolCount.textContent = "No tools found.";
+      } else if (visibleCount === 1) {
+        toolCount.textContent = "Showing 1 tool.";
+      } else {
+        toolCount.textContent = `Showing ${visibleCount} tools.`;
+      }
     }
 
     // Attach event listeners
