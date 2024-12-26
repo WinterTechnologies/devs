@@ -12,13 +12,13 @@ const { categories } = Astro.props;
     type="text"
     id="searchFilter"
     placeholder="Search..."
-    class="px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600 w-full sm:w-auto"
+    class="px-4 py-2 rounded-lg border border-primary focus:outline-none focus:ring-2 focus:ring-purple-800 w-full sm:w-auto"
   />
 
   <!-- Category Filter -->
   <select
     id="categoryFilter"
-    class="px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
+    class="px-4 py-2 rounded-lg border border-primary focus:outline-none focus:ring-2 focus:ring-purple-800"
   >
     <option value="all">All Categories</option>
     {
@@ -33,7 +33,7 @@ const { categories } = Astro.props;
   <!-- Pricing Filter -->
   <select
     id="priceFilter"
-    class="px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
+    class="px-4 py-2 rounded-lg border border-primary focus:outline-none focus:ring-2 focus:ring-purple-800"
   >
     <option value="all">All Pricing Models</option>
     <option value="Free">Free</option>
@@ -45,7 +45,7 @@ const { categories } = Astro.props;
   <select
     name="platformFilter"
     id="platformFilter"
-    class="px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
+    class="px-4 py-2 rounded-lg border border-primary focus:outline-none focus:ring-2 focus:ring-purple-800"
   >
     <option value="all">All Platforms</option>
     <option value="Windows">Windows</option>
@@ -57,7 +57,7 @@ const { categories } = Astro.props;
 </div>
 
 <!-- Tool Count -->
-<p id="toolCount" class="mt-4 text-sm text-gray-600">Showing all tools.</p>
+<p id="toolCount" class="mt-4 text-sm text-gray-800">Showing all tools.</p>
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
