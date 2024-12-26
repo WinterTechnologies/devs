@@ -9,22 +9,34 @@ interface Props {
   link: string;
   category: string;
   pricingModel: string;
+  platform: string[];
   Content: any;
 }
-const { title, description, link, category, pricingModel, Content } =
-  Astro.props;
+const {
+  title,
+  description,
+  link,
+  category,
+  pricingModel,
+  platform = [],
+  Content,
+} = Astro.props;
 ---
 
 <li
   data-category={category}
   data-price={pricingModel}
+  data-platform={platform.join(",")}
   class="shadow border border-neutral-200 px-4 py-4 rounded h-full justify-between flex-col flex"
 >
   <div>
     <h2 class="p-0 m-0 text-2xl font-semibold">{title}</h2>
     <p class="truncate">{description}</p>
-    <Badge className="capitalize">{category}</Badge>
-    <Badge className="capitalize">{pricingModel}</Badge>
+    <div class="inline-flex gap-1 flex-wrap">
+      <Badge className="capitalize">{category}</Badge>
+      <Badge className="capitalize">{pricingModel}</Badge>
+      {platform.map((plat) => <Badge className="capitalize">{plat}</Badge>)}
+    </div>
     <div class="prose prose-h2:mb-2 prose-h3:mb-1 prose-p:mb-1 py-4">
       <Content />
     </div>

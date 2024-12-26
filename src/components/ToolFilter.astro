@@ -8,7 +8,7 @@ interface Props {
 const { categories } = Astro.props;
 ---
 
-<div class="flex gap-4">
+<div class="flex flex-col md:flex-row gap-4">
   <select
     id="categoryFilter"
     class="px-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
@@ -32,17 +32,32 @@ const { categories } = Astro.props;
     <option value="Paid">Paid</option>
     <option value="Freemium">Freemium</option>
   </select>
+
+  <select
+    name="platformFilter"
+    id="platformFilter"
+    class="px-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
+  >
+    <option value="all">All Platforms</option>
+    <option value="Windows">Windows</option>
+    <option value="macOS">macOS</option>
+    <option value="Linux">Linux</option>
+    <option value="Web">Web</option>
+    <option value="Mobile">Mobile</option>
+  </select>
 </div>
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
     const categoryFilter = document.getElementById("categoryFilter");
     const priceFilter = document.getElementById("priceFilter");
+    const platformFilter = document.getElementById("platformFilter");
     const toolCards = document.querySelectorAll("[data-category]");
 
     function updateVisibility() {
       const selectedCategory = categoryFilter.value;
       const selectedPrice = priceFilter.value;
+      const selectedPlatform = platformFilter.value;
 
       toolCards.forEach((card) => {
         const matchesCategory =
@@ -51,8 +66,11 @@ const { categories } = Astro.props;
         const matchesPrice =
           selectedPrice === "all" ||
           card.getAttribute("data-price") === selectedPrice;
+        const matchesPlatform =
+          selectedPlatform === "all" ||
+          card.getAttribute("data-platform").includes(selectedPlatform);
 
-        if (matchesCategory && matchesPrice) {
+        if (matchesCategory && matchesPrice && matchesPlatform) {
           card.classList.remove("hidden");
         } else {
           card.classList.add("hidden");
@@ -60,6 +78,7 @@ const { categories } = Astro.props;
       });
     }
 
+    platformFilter?.addEventListener("change", updateVisibility);
     categoryFilter?.addEventListener("change", updateVisibility);
     priceFilter?.addEventListener("change", updateVisibility);
   });

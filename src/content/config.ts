@@ -15,6 +15,7 @@ const tools = defineCollection({
     draft: z.boolean().default(false),
     featured: z.boolean().default(false).optional(),
     date: z.coerce.date(),
+    platform: z.array(z.enum(["Windows", "macOS", "Linux", "Web", "Mobile"])),
     category: z.enum(["design", "video", "audio", "development", "other"]),
   }),
 });
