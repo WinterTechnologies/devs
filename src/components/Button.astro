@@ -6,6 +6,7 @@ interface Props {
   className?: string;
   variant?: "default" | "outline";
   size?: "default" | "sm" | "lg" | "icon";
+  id?: string;
 }
 
 const buttonVariant = {
@@ -20,7 +21,13 @@ const buttonSize = {
   icon: "h-10 w-10",
 };
 
-const { href, className, variant = "default", size = "default" } = Astro.props;
+const {
+  href,
+  className,
+  variant = "default",
+  size = "default",
+  id = "",
+} = Astro.props;
 ---
 
 <a
@@ -31,6 +38,7 @@ const { href, className, variant = "default", size = "default" } = Astro.props;
     buttonSize[size],
     className
   )}
+  id={id}
 >
   <slot />
 </a>
