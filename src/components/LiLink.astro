@@ -13,11 +13,14 @@ const { href, title, className } = Astro.props;
 
 <li
   class={cn(
-    "border border-primary rounded shadow hover:bg-primary/20 duration-100 group",
+    "border border-primary rounded shadow hover:bg-primary/20 duration-100 group h-full ",
     className
   )}
 >
-  <a href={href} class="w-full h-full p-4 inline-flex justify-between">
+  <a
+    href={href}
+    class="w-full h-full p-4 inline-flex justify-between justify-center items-center"
+  >
     <p>{title}</p>
     <Icon name="lucide:arrow-up-right" class="size-6" />
   </a>
