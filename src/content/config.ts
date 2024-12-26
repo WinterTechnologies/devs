@@ -20,4 +20,18 @@ const tools = defineCollection({
   }),
 });
 
-export const collections = { tools };
+const resources = defineCollection({
+  type: "data",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    links: z.array(
+      z.object({
+        title: z.string(),
+        url: z.string().url(),
+      }),
+    ),
+  }),
+});
+
+export const collections = { tools, resources };

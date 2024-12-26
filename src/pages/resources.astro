@@ -1,38 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-interface Link {
-  title: string;
-  url: string;
-}
-
-interface Category {
-  title: string;
-  description: string;
-  links: Link[];
-}
-
-const resources: Category[] = [
-  {
-    title: "Official Roblox",
-    description: "Official resources from Roblox.",
-    links: [
-      {
-        title: "Roblox Devforum",
-        url: "https://devforum.roblox.com/",
-      },
-      {
-        title: "Roblox Documentation",
-        url: "https://developer.roblox.com/",
-      },
-      {
-        title: "Roblox Developer Store",
-        url: "https://create.roblox.com/store/models",
-      },
-    ],
-  },
-];
+const resources = await getCollection("resources");
 ---
 
 <Layout title="Resources">
@@ -47,12 +18,12 @@ const resources: Category[] = [
     </p>
     <div class="py-8 flex flex-col gap-4">
       {
-        resources.map((category: Category) => (
+        resources.map((category) => (
           <div>
-            <h3 class="text-xl font-semibold">{category.title}</h3>
-            <p class="pb-2">{category.description}</p>
+            <h3 class="text-xl font-semibold">{category.data.title}</h3>
+            <p class="pb-2">{category.data.description}</p>
             <ul class="grid grid-cols-1 md:grid-cols-3 gap-2 items-center">
-              {category.links.map((link: Link) => (
+              {category.data.links.map((link) => (
                 <a
                   class="hover:bg-neutral-200 rounded overflow-hidden p-4 border relative duration-100"
                   href={link.url}

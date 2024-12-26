@@ -1,0 +1,19 @@
+{
+  "$schema": "./_schema.json",
+  "title": "Official Roblox",
+  "description": "Official resources from Roblox.",
+  "links": [
+    {
+      "title": "Roblox Devforum",
+      "url": "https://devforum.roblox.com/"
+    },
+    {
+      "title": "Roblox Documentation",
+      "url": "https://developer.roblox.com/"
+    },
+    {
+      "title": "Roblox Developer Store",
+      "url": "https://create.roblox.com/store/models"
+    }
+  ]
+}
