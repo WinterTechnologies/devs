@@ -1,6 +1,4 @@
 ---
-import { Select, SelectContent, SelectItem } from "@/components/ui/select";
-
 interface Props {
   categories: string[];
 }
@@ -8,10 +6,19 @@ interface Props {
 const { categories } = Astro.props;
 ---
 
-<div class="flex flex-col md:flex-row gap-4">
+<div class="flex flex-wrap gap-4">
+  <!-- Search Box -->
+  <input
+    type="text"
+    id="searchFilter"
+    placeholder="Search..."
+    class="px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600 w-full sm:w-auto"
+  />
+
+  <!-- Category Filter -->
   <select
     id="categoryFilter"
-    class="px-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
+    class="px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
   >
     <option value="all">All Categories</option>
     {
@@ -23,9 +30,10 @@ const { categories } = Astro.props;
     }
   </select>
 
+  <!-- Pricing Filter -->
   <select
     id="priceFilter"
-    class="px-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
+    class="px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
   >
     <option value="all">All Pricing Models</option>
     <option value="Free">Free</option>
@@ -33,10 +41,11 @@ const { categories } = Astro.props;
     <option value="Freemium">Freemium</option>
   </select>
 
+  <!-- Platform Filter -->
   <select
     name="platformFilter"
     id="platformFilter"
-    class="px-4 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
+    class="px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
   >
     <option value="all">All Platforms</option>
     <option value="Windows">Windows</option>
@@ -49,28 +58,53 @@ const { categories } = Astro.props;
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
+    const searchFilter = document.getElementById("searchFilter");
     const categoryFilter = document.getElementById("categoryFilter");
     const priceFilter = document.getElementById("priceFilter");
     const platformFilter = document.getElementById("platformFilter");
     const toolCards = document.querySelectorAll("[data-category]");
 
     function updateVisibility() {
-      const selectedCategory = categoryFilter.value;
-      const selectedPrice = priceFilter.value;
-      const selectedPlatform = platformFilter.value;
+      const searchTerm = searchFilter.value.toLowerCase();
+      const selectedCategory = categoryFilter.value.toLowerCase();
+      const selectedPrice = priceFilter.value.toLowerCase();
+      const selectedPlatform = platformFilter.value.toLowerCase();
 
       toolCards.forEach((card) => {
-        const matchesCategory =
-          selectedCategory === "all" ||
-          card.getAttribute("data-category") === selectedCategory;
-        const matchesPrice =
-          selectedPrice === "all" ||
-          card.getAttribute("data-price") === selectedPrice;
-        const matchesPlatform =
-          selectedPlatform === "all" ||
-          card.getAttribute("data-platform").includes(selectedPlatform);
+        const cardTitle = card.querySelector("h2")?.textContent.toLowerCase();
+        const cardDescription = card
+          .querySelector("p")
+          ?.textContent.toLowerCase();
+        const cardContent = card
+          .querySelector("#card-content")
+          ?.textContent.toLowerCase();
+        const cardCategory = card.getAttribute("data-category")?.toLowerCase();
+        const cardPrice = card.getAttribute("data-price")?.toLowerCase();
+        const cardPlatform = card.getAttribute("data-platform")?.toLowerCase();
 
-        if (matchesCategory && matchesPrice && matchesPlatform) {
+        const platformList = cardPlatform?.split(",") || [];
+
+        const matchesSearch =
+          searchTerm === "" ||
+          (cardTitle && cardTitle.includes(searchTerm)) ||
+          (cardDescription && cardDescription.includes(searchTerm)) ||
+          (cardContent && cardContent.includes(searchTerm));
+
+        const matchesCategory =
+          selectedCategory === "all" || cardCategory === selectedCategory;
+
+        const matchesPrice =
+          selectedPrice === "all" || cardPrice === selectedPrice;
+
+        const matchesPlatform =
+          selectedPlatform === "all" || platformList.includes(selectedPlatform);
+
+        if (
+          matchesSearch &&
+          matchesCategory &&
+          matchesPrice &&
+          matchesPlatform
+        ) {
           card.classList.remove("hidden");
         } else {
           card.classList.add("hidden");
@@ -78,8 +112,13 @@ const { categories } = Astro.props;
       });
     }
 
-    platformFilter?.addEventListener("change", updateVisibility);
+    // Attach event listeners
+    searchFilter?.addEventListener("input", updateVisibility);
     categoryFilter?.addEventListener("change", updateVisibility);
     priceFilter?.addEventListener("change", updateVisibility);
+    platformFilter?.addEventListener("change", updateVisibility);
+
+    // Initial visibility update
+    updateVisibility();
   });
 </script>
