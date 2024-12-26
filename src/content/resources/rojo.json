@@ -1,0 +1,23 @@
+{
+  "$schema": "./_schema.json",
+  "title": "Rojo",
+  "description": "Tools in the rojo ecosystem.",
+  "links": [
+    {
+      "title": "Rojo - Intergrate with Git",
+      "url": "https://rojo.space"
+    },
+    {
+      "title": "roblox-ts - Write games in TS",
+      "url": "https://roblox-ts.com/"
+    },
+    {
+      "title": "Wally - Package Manager",
+      "url": "https://wally.run"
+    },
+    {
+      "title": "Moonwave - Generate Docs",
+      "url": "https://github.com/UpliftGames/moonwave"
+    }
+  ]
+}
