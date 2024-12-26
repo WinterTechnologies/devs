@@ -9,8 +9,8 @@ interface Props {
 }
 
 const buttonVariant = {
-  default: "bg-neutral-700 text-white hover:bg-neutral-600 focus:outline-none",
-  outline: "border border-neutral-700 hover:bg-neutral-200 focus:outline-none",
+  default: "bg-primary text-white hover:bg-purple-800 focus:outline-none",
+  outline: "border border-primary hover:bg-primary/20 focus:outline-none",
 };
 
 const buttonSize = {
@@ -26,7 +26,7 @@ const { href, className, variant = "default", size = "default" } = Astro.props;
 <a
   href={href}
   class={cn(
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 duration-100",
     buttonVariant[variant],
     buttonSize[size],
     className

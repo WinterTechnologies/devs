@@ -9,6 +9,9 @@ export default {
       fontFamily: {
         inter: ["Inter Variable", ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        primary: "hsl(271, 81%, 56%)",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
