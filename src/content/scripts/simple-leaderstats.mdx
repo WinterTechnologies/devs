@@ -1,0 +1,33 @@
+---
+title: Simple Leaderstats
+author: flvffywvffy
+date: 2024-12-26
+---
+
+Create a script inside of ServerScriptService and paste this code.
+
+```lua
+--// Services
+local Players = game:GetService("Players")
+
+--// Functions
+local function playerAdded(player: Player)
+    -- Create a leaderstats folder
+    local leaderstats = Instance.new("Folder")
+    leaderstats.Name = "leaderstats"
+
+    -- This value will be inserted into the leaderstats folder, and displayed in the leaderboard.
+    -- Copy these lines of code and replace the "Name" and "Value" if you want to add more values.
+    local cash = Instance.new("IntValue")
+    cash.Name = "Cach"
+    cash.Value = 20
+    cash.Parent = leaderstats
+
+
+    -- Parent the leaderstats folder to the player after the values have been added.
+    leaderstats.Parent = player
+end
+
+--// Events
+Players.PlayerAdded:Connect(playerAdded)
+```
