@@ -77,13 +77,13 @@ const { categories } = Astro.props;
       let visibleCount = 0;
 
       toolCards.forEach((card) => {
-        const cardTitle = card.querySelector("h2")?.textContent.toLowerCase();
+        const cardTitle = card.querySelector("h2")?.textContent?.toLowerCase();
         const cardDescription = card
           .querySelector("p")
-          ?.textContent.toLowerCase();
+          ?.textContent?.toLowerCase();
         const cardContent = card
-          .querySelector("#card-content")
-          ?.textContent.toLowerCase();
+          .querySelector(".card-content")
+          ?.textContent?.toLowerCase();
         const cardCategory = card.getAttribute("data-category")?.toLowerCase();
         const cardPrice = card.getAttribute("data-price")?.toLowerCase();
         const cardPlatform = card.getAttribute("data-platform")?.toLowerCase();
