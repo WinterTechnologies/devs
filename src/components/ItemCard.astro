@@ -10,7 +10,6 @@ interface Props {
   category: string;
   pricingModel: string;
   platform: string[];
-  Content: any;
 }
 const {
   title,
@@ -19,7 +18,6 @@ const {
   category,
   pricingModel,
   platform = [],
-  Content,
 } = Astro.props;
 ---
 
@@ -41,7 +39,7 @@ const {
       class="prose prose-h2:mb-2 prose-h3:mb-1 prose-p:mb-1 py-4"
       id="card-content"
     >
-      <Content />
+      <slot />
     </div>
   </div>
   <Button href={link} variant="outline" className="w-full">View Tool</Button>

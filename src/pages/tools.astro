@@ -24,7 +24,11 @@ const categories = [...new Set(tools.map((tool) => tool.data.category))];
         {
           tools.map(async (tool) => {
             const { Content } = await tool.render();
-            return <ItemCard Content={Content} {...tool.data} />;
+            return (
+              <ItemCard {...tool.data}>
+                <Content />
+              </ItemCard>
+            );
           })
         }
       </ul>

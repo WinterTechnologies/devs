@@ -16,6 +16,7 @@
     "@fontsource-variable/inter": "^5.1.0",
     "@iconify-json/fa-brands": "^1.2.1",
     "@iconify-json/lucide": "^1.2.20",
+    "@preact/signals": "^2.0.0",
     "@radix-ui/react-select": "^2.1.4",
     "@radix-ui/react-slot": "^1.1.1",
     "@types/react": "^19.0.2",
