@@ -1,0 +1,24 @@
+---
+import { cn } from "@/lib/utils";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  href: string;
+  title: string;
+  className?: string;
+}
+
+const { href, title, className } = Astro.props;
+---
+
+<li
+  class={cn(
+    "border border-primary rounded shadow hover:bg-primary/20 duration-100 group",
+    className
+  )}
+>
+  <a href={href} class="w-full h-full p-4 inline-flex justify-between">
+    <p>{title}</p>
+    <Icon name="lucide:arrow-up-right" class="size-6" />
+  </a>
+</li>

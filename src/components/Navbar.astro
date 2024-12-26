@@ -1,15 +1,28 @@
 ---
-// src/components/Navbar.astro
+import { Icon } from "astro-icon/components";
+
 interface NavItem {
   title: string;
   href: string;
 }
 
+interface IconNavItem extends NavItem {
+  icon: string;
+}
+
 const navItems: NavItem[] = [
   { title: "Home", href: "/" },
-  { title: "Tutorials", href: "/tutorials" },
+  { title: "Scripts", href: "/scripts" },
   { title: "Tools", href: "/tools" },
   { title: "Resources", href: "/resources" },
+];
+
+const iconNavItems: IconNavItem[] = [
+  {
+    title: "GitHub",
+    href: "https://github.com/wintertechnologies/devs",
+    icon: "lucide:github",
+  },
 ];
 ---
 
@@ -30,6 +43,16 @@ const navItems: NavItem[] = [
               class="text-gray-700 hover:text-black hover:underline"
             >
               {title}
+            </a>
+          ))
+        }
+        {
+          iconNavItems.map(({ title, href, icon }) => (
+            <a href={href} class="p-1 group">
+              <Icon
+                name={icon}
+                class="size-6 group-hover:text-primary duration-100"
+              />
             </a>
           ))
         }

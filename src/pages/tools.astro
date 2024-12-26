@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import ItemCard from "../../components/ItemCard.astro";
-import Layout from "../../layouts/Layout.astro";
-import ToolFilter from "../../components/ToolFilter.astro";
+import ItemCard from "@/components/ItemCard.astro";
+import Layout from "@/layouts/Layout.astro";
+import ToolFilter from "@/components/ToolFilter.astro";
 
 const unfilteredTools = await getCollection("tools");
 const tools = unfilteredTools.filter((tool) => {

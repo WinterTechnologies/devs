@@ -8,17 +8,17 @@ interface Props {
   title: string;
   description: string;
 
-  headings: MarkdownHeading[];
+  // headings: MarkdownHeading[];
 
   backLink?: string;
   backText?: string;
 }
-const { title, description, backLink, backText, headings } = Astro.props;
+const { title, description, backLink, backText } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
   <div class="md:fixed md:top-32 md:right-0">
-    <TableOfContents headings={headings} />
+    <!-- <TableOfContents headings={headings} /> -->
   </div>
   <article
     class="prose lg:prose-xl md:max-w-screen-sm md:mx-auto mx-4 py-4 mb-4"

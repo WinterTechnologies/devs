@@ -34,4 +34,13 @@ const resources = defineCollection({
   }),
 });
 
-export const collections = { tools, resources };
+const scripts = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    author: z.string(),
+    date: z.coerce.date(),
+  }),
+});
+
+export const collections = { tools, resources, scripts };

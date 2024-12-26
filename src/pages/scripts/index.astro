@@ -1,0 +1,27 @@
+---
+import LiLink from "@/components/LiLink.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+const scripts = await getCollection("scripts");
+---
+
+<Layout title="Scripts">
+  <main>
+    <section
+      class="flex flex-col gap-4 py-6 md:max-w-screen-lg md:mx-auto mx-4"
+    >
+      <h1 class="text-2xl md:text-3xl font-semibold">Scripts</h1>
+      <ul
+        class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center justify-center"
+      >
+        {
+          scripts.map((script) => (
+            <LiLink href={`/scripts/${script.slug}`} {...script.data} />
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Layout>

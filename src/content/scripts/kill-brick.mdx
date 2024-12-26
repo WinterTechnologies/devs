@@ -1,0 +1,16 @@
+---
+title: Kill Brick
+author: flvffywvffy
+date: 2024-12-26
+---
+
+Put this script inside your part.
+
+```lua
+script.Parent.Touched:Connect(function(hit)
+    local humanoid = hit.Parent:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        humanoid.Health = 0
+    end
+end)
+```

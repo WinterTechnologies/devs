@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import LiLink from "@/components/LiLink.astro";
 
 const resources = await getCollection("resources");
 ---
@@ -24,15 +25,7 @@ const resources = await getCollection("resources");
             <p class="pb-2">{category.data.description}</p>
             <ul class="grid grid-cols-1 md:grid-cols-3 gap-2 items-center">
               {category.data.links.map((link) => (
-                <a
-                  class="hover:bg-neutral-200 rounded overflow-hidden p-4 border relative duration-100"
-                  href={link.url}
-                >
-                  <li class="inline-flex justify-between w-full">
-                    {link.title}{" "}
-                    <Icon name="lucide:arrow-up-right" class="size-6" />
-                  </li>
-                </a>
+                <LiLink href={link.url} {...link} />
               ))}
             </ul>
           </div>
