@@ -2,7 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
 import "@fontsource-variable/inter";
-import { ClientRouter } from "astro:transitions";
+// import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -22,7 +22,7 @@ import "@/styles/globals.css";
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title} | WinterDevs</title>
-    <ClientRouter />
+    <!-- <ClientRouter /> -->
   </head>
   <body class="font-inter flex flex-col min-h-screen">
     <Navbar />
