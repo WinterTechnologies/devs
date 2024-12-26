@@ -23,6 +23,11 @@ const iconNavItems: IconNavItem[] = [
     href: "https://github.com/wintertechnologies/devs",
     icon: "lucide:github",
   },
+  {
+    title: "Discord",
+    href: "https://discord.gg/5T3DxxS9rT",
+    icon: "fa-brands:discord",
+  },
 ];
 ---
 
@@ -35,7 +40,7 @@ const iconNavItems: IconNavItem[] = [
       </div>
 
       <!-- Desktop Menu -->
-      <div class="hidden md:flex md:items-center md:space-x-8">
+      <div class="hidden md:flex md:items-center md:gap-8">
         {
           navItems.map(({ title, href }) => (
             <a
@@ -46,20 +51,34 @@ const iconNavItems: IconNavItem[] = [
             </a>
           ))
         }
-        {
-          iconNavItems.map(({ title, href, icon }) => (
-            <a href={href} class="p-1 group">
-              <Icon
-                name={icon}
-                class="size-6 group-hover:text-primary duration-100"
-              />
-            </a>
-          ))
-        }
+        <div class="inline-flex gap-3">
+          {
+            iconNavItems.map(({ title, href, icon }) => (
+              <a href={href} class="group">
+                <Icon
+                  name={icon}
+                  class="size-6 group-hover:text-primary duration-100"
+                />
+              </a>
+            ))
+          }
+        </div>
       </div>
 
       <!-- Mobile Menu Button -->
-      <div class="flex md:hidden">
+      <div class="flex md:hidden items-center">
+        <div class="inline-flex gap-3 pr-2">
+          {
+            iconNavItems.map(({ title, href, icon }) => (
+              <a href={href} class="group">
+                <Icon
+                  name={icon}
+                  class="size-6 group-hover:text-primary duration-100"
+                />
+              </a>
+            ))
+          }
+        </div>
         <button
           type="button"
           class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"

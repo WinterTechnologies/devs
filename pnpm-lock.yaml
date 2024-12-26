@@ -20,6 +20,9 @@ importers:
       '@fontsource-variable/inter':
         specifier: ^5.1.0
         version: 5.1.0
+      '@iconify-json/fa-brands':
+        specifier: ^1.2.1
+        version: 1.2.1
       '@iconify-json/lucide':
         specifier: ^1.2.20
         version: 1.2.20
@@ -565,6 +568,9 @@ packages:
 
   '@fontsource-variable/inter@5.1.0':
     resolution: {integrity: sha512-Wj2dUGP0vUpxRGQTXQTCNJO+aLcFcQm+gUPXfj/aS877bQkEPBPv9JvZJpwdm2vzelt8NTZ+ausKlBCJjh2XIg==}
+
+  '@iconify-json/fa-brands@1.2.1':
+    resolution: {integrity: sha512-v5wVXoWIusAU1n0GGctIY+VyINIFXaD/WWHiwS+TFX74C0pFZrmrwUkqZDDCclu7zxuhlixPO+VLyDqNtoppfA==}
 
   '@iconify-json/lucide@1.2.20':
     resolution: {integrity: sha512-m/8rqukvQfsE+MYTwNXCxP/K2iucTCGSQfS0XZhYpkZKGRdiEOdAAnd8Vv+E78xKK94Jza2eTc5ihxbw6+i7EQ==}
@@ -3723,6 +3729,10 @@ snapshots:
   '@floating-ui/utils@0.2.8': {}
 
   '@fontsource-variable/inter@5.1.0': {}
+
+  '@iconify-json/fa-brands@1.2.1':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify-json/lucide@1.2.20':
     dependencies:
