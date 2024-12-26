@@ -1,0 +1,33 @@
+---
+title: Group Only Door
+author: flvffywvffy
+date: 2024-12-26
+---
+
+Create a door, then place this script inside of the door.
+
+```lua
+--// Variables
+local door = script.Parent -- Change if the door is not the parent of this script.
+local groupId = 1234567 -- Your group ID
+local minRank = 255 -- Minimum rank required to open the door
+
+--// Functions
+local function openDoor(hit)
+    local character = hit.Parent
+    local player = game.Players:GetPlayerFromCharacter(character)
+
+    if player then
+        if player:GetRankInGroup(groupId) >= minRank then
+            door.CanCollide = false
+            door.Transparency = 1
+            task.wait(1)
+            door.CanCollide = true
+            door.Transparency = 0
+        end
+    end
+end
+
+--// Events
+door.Touched:Connect(openDoor)
+```
