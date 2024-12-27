@@ -15,6 +15,7 @@ const navItems: NavItem[] = [
   { title: "Scripts", href: "/scripts" },
   { title: "Tools", href: "/tools" },
   { title: "Resources", href: "/resources" },
+  { title: "Contribute", href: "/contrib" },
 ];
 
 const iconNavItems: IconNavItem[] = [
@@ -40,7 +41,7 @@ const iconNavItems: IconNavItem[] = [
       </div>
 
       <!-- Desktop Menu -->
-      <div class="hidden md:flex md:items-center md:gap-8">
+      <div class="hidden md:flex md:items-center md:gap-6">
         {
           navItems.map(({ title, href }) => (
             <a
@@ -54,7 +55,7 @@ const iconNavItems: IconNavItem[] = [
         <div class="inline-flex gap-3">
           {
             iconNavItems.map(({ title, href, icon }) => (
-              <a href={href} class="group">
+              <a href={href} aria-label={title} class="group">
                 <Icon
                   name={icon}
                   class="size-6 group-hover:text-primary duration-100"
@@ -70,7 +71,7 @@ const iconNavItems: IconNavItem[] = [
         <div class="inline-flex gap-3 pr-2">
           {
             iconNavItems.map(({ title, href, icon }) => (
-              <a href={href} class="group">
+              <a href={href} class="group" aria-label={title}>
                 <Icon
                   name={icon}
                   class="size-6 group-hover:text-primary duration-100"
