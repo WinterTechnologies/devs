@@ -1,0 +1,30 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout title="Contributors">
+  <main class="md:max-w-screen-lg md:mx-auto mx-4 py-6 space-y-2">
+    <section>
+      <h1 class="text-2xl md:text-3xl font-semibold">Contributors</h1>
+      <p>
+        We are always looking for contributors to help us maintain this
+        repository. If you are interested in contributing, please feel free to
+        open an issue or pull request on our <a
+          href="https://github.com/wintertechnologies/devs"
+          class="underline hover:text-primary duration-100">GitHub repository</a
+        >.
+      </p>
+    </section>
+    <section class="flex flex-col gap-4">
+      <h2 class="text-xl font-semibold">Current Contributors</h2>
+      <a href="https://github.com/wintertechnologies/devs/graphs/contributors">
+        <img src="https://contrib.rocks/image?repo=wintertechnologies/devs" />
+      </a>
+      <a
+        href="https://contrib.rocks"
+        class="text-sm underline hover:text-primary duration-100"
+        >Made with contrib.rocks</a
+      >
+    </section>
+  </main>
+</Layout>
