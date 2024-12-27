@@ -13,6 +13,7 @@ import preact from "@astrojs/preact";
 // https://astro.build/config
 export default defineConfig({
   site: "https://devs.wintertech.xyz",
+  prefetch: true,
   integrations: [
     mdx(),
     tailwind({ applyBaseStyles: false }),
