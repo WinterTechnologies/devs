@@ -1,0 +1,19 @@
+{
+  "$schema": "./_schema.json",
+  "title": "Youtube",
+  "description": "Youtube channels that can help you with learning Roblox development.",
+  "links": [
+    {
+      "title": "Alvinblox",
+      "url": "https://www.youtube.com/@AlvinBlox"
+    },
+    {
+      "title": "RoScripter",
+      "url": "https://www.youtube.com/@RoScripter"
+    },
+    {
+      "title": "GnomeCode",
+      "url": "https://www.youtube.com/@GnomeCode"
+    }
+  ]
+}
