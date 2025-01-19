@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import ItemCard from "../components/ItemCard.astro";
+import Button from "@/components/Button.astro";
 
 const unfilteredTools = await getCollection("tools");
 const tools = unfilteredTools
@@ -22,6 +23,10 @@ const tools = unfilteredTools
           Welcome to WinterDevs. An accessible, open-source, and
           community-driven resource for Roblox developers.
         </p>
+        <div class="flex flex-col md:flex-row gap-2 pt-4 justify-center">
+          <Button href="/tools">Explore Tools</Button>
+          <Button href="/resources" variant="outline">Explore Resources</Button>
+        </div>
       </div>
       <div class="absolute w-full h-full top-0 left-0 bg-black/85 z-0"></div>
     </section>
