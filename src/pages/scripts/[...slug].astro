@@ -22,4 +22,9 @@ const { Content } = await render(post);
 >
   <h1>{post.data.title}</h1>
   <Content />
+  <p class="text-sm">
+    By {post.data.author} • Last Updated: {
+      new Date(post.data.date).toLocaleDateString()
+    }
+  </p>
 </Post>
