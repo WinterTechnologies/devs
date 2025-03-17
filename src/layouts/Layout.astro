@@ -10,6 +10,8 @@ interface Props {
 }
 const { title, description = "WinterDevs" } = Astro.props;
 
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
+
 import "@/styles/globals.css";
 ---
 
@@ -18,10 +20,27 @@ import "@/styles/globals.css";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+
+    <meta property="og:title" content={`${title} | WinterDevs`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content="/images/og-image.png" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | WinterDevs`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/images/og-image.png" />
+
+    <meta name="robots" content="index, follow" />
+
     <title>{title} | WinterDevs</title>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+
 
     <!-- Plausible Analytics -->
     <script
